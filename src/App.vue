@@ -5,7 +5,7 @@ import Hero from './components/hero.vue'
 
 <template>
   <Navbar/>
-  <div class="pt-16">
+  <div class="h-[20vh] relative">
     <Hero/>
   </div>
 </template>

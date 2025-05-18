@@ -2,11 +2,7 @@
 export default {
   content: ['./index.html', './src/**/*.{vue,js,ts}'],
   theme: {
-    extend: {
-      gridTemplateColumns: {
-        '70/30': '70% 28%',
-      },
-    },
+    extend: {},
   },
   variants: {
     extend: {},
