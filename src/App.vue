@@ -1,7 +1,11 @@
 <script setup>
-import AppNavbar from '@/components/AppNavbar.vue'
+import Navbar from './components/navbar.vue'
+import Hero from './components/hero.vue'
 </script>
 
 <template>
-  <AppNavbar/>
+  <Navbar/>
+  <div class="pt-16">
+    <Hero/>
+  </div>
 </template>
