@@ -4,7 +4,7 @@ import logo from '../assets/img/logo.png'
 
 <template>
   <header
-    class="bg-green-600 fixed w-screen h-auto box-content py-3 flex items-center justify-center space-x-7 z-10"
+    class="bg-green-600 w-screen h-auto box-content py-3 flex items-center justify-center space-x-7 z-10"
   >
     <img :src="logo" alt="logo" class="h-12 w-12"/>
     <button

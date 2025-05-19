@@ -1,16 +1,22 @@
-<script setup></script>
+<script setup>
+import {defineProps} from 'vue'
 
+defineProps({
+  title: {
+    type: String,
+    default: 'Vue Jobs',
+  },
+  subtitle: {
+    type: String,
+    default: 'Find the Vue job that fits your skills and needs',
+  },
+})
+</script>
 <template>
-  <!--  issue#2-->
-  <!--  fix the overlapping issue in smaller screens-->
-  <div class="bg-green-600 w-full h-[15vh] absolute bottom-0">
-    <div
-      class="flex flex-col items-center justify-center space-y-2 absolute bottom-0 h-[10vh] w-screen"
-    >
-      <h1 class="font-bold fluid-text text-center mb-2 text-white">Become a Vue Dev</h1>
-      <p class="text-white text-nowrap text-[20px] font-normal">
-        Find the Vue job that fits your skills and needs
-      </p>
-    </div>
+  <div class="bg-green-600 w-full h-auto flex flex-col items-center justify-center">
+    <h1 class="font-semibold fluid-text text-center mb-2 text-white">{{ title }}</h1>
+    <p class="text-white fluid-text-sm text-wrap font-medium">
+      {{ subtitle }}
+    </p>
   </div>
 </template>
