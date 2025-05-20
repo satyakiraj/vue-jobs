@@ -11,3 +11,21 @@
     font-size: clamp(12px, 3vw, 16px);
   }
 }
+
+@layer components {
+  .card {
+    @apply shadow-md p-6 rounded-lg;
+
+    h2 {
+      @apply text-2xl font-bold;
+    }
+
+    p {
+      @apply text-gray-600 mt-2 mb-4;
+    }
+
+    a {
+      @apply inline-block px-4 py-2 text-white rounded-lg;
+    }
+  }
+}
