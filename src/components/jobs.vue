@@ -1,11 +1,29 @@
 <script setup>
-import {defineProps} from 'vue'
+defineOptions({
+  name: 'JobCard',
+})
+import { computed, defineProps, ref } from 'vue'
 
-defineProps({
+const props = defineProps({
   job: {
     type: Object,
     required: true,
   },
+})
+
+const showDescription = ref(false)
+
+const toggleDescription = (e) => {
+  showDescription.value = !showDescription.value
+  e.target.innerText = showDescription.value ? 'Show Less' : 'More'
+}
+
+const truncatedDescription = computed(() => {
+  let description = props.job.description
+  if (!showDescription.value) {
+    return description.slice(0, 80) + '...'
+  }
+  return description
 })
 </script>
 
@@ -15,13 +33,17 @@ defineProps({
   >
     <h6 class="font-normal text-emerald-500">{{ job.type }}</h6>
     <h2 class="font-semibold text-green-500">{{ job.title }}</h2>
-    <p class="my-4 font-normal text-wrap">{{ job.description }}</p>
+    <p class="my-4 font-normal text-wrap inline-block">{{ truncatedDescription }}</p>
+    <a class="mb-4 font-medium text-green-500 cursor-pointer" @click="toggleDescription">More</a>
     <p class="mb-3 text-emerald-500">{{ job.salary }}</p>
 
-    <hr class="mb-3 border-t-2 border-gray-300"/>
+    <hr class="mb-3 border-t-2 border-gray-300" />
 
     <div class="flex w-full flex-row items-center justify-between">
-      <p class="font-medium text-orange-500">{{ job.location }}</p>
+      <p class="font-medium text-orange-500">
+        <i class="pi pi-map-marker"></i>
+        {{ job.location }}
+      </p>
       <a
         class="cursor-pointer rounded bg-emerald-500 px-4 py-1 text-white transition hover:bg-emerald-600"
       >
