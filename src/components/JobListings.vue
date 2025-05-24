@@ -14,7 +14,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="h-auto mx-4 px-4 py-10 bg-green-100 rounded-md">
+  <div class="h-auto mx-4 px-4 py-10 bg-green-100 rounded-md my-12">
     <h1 class="font-bold text-center text-3xl text-green-500">Browse Jobs</h1>
 
     <div class="grid gap-6 grid-cols-1 2xl:grid-cols-3 justify-center px-3 bg-transparent">

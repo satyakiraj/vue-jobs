@@ -6,24 +6,24 @@ import logo from '../assets/img/logo.png'
   <header
     class="bg-green-600 w-screen h-auto box-content py-3 flex items-center justify-center space-x-7 z-10"
   >
-    <img :src="logo" alt="logo" class="h-12 w-12"/>
-    <button
+    <img :src="logo" alt="logo" class="h-12 w-12" />
+    <RouterLink
       class="h-8 w-14 px-2 py-1 box-content rounded-lg text-white border-none text-center focus:bg-green-800 font-medium hover:bg-green-950"
-      type="button"
+      to="/"
     >
       Home
-    </button>
-    <button
+    </RouterLink>
+    <RouterLink
       class="h-8 w-14 px-2 py-1 box-content rounded-lg text-white border-none text-center focus:bg-green-800 font-medium hover:bg-green-950"
-      type="button"
+      to="/jobs"
     >
       Jobs
-    </button>
-    <button
+    </RouterLink>
+    <RouterLink
       class="h-8 w-14 px-[10px] py-1 box-content rounded-lg text-white border-none text-center focus:bg-green-800 font-medium text-nowrap hover:bg-green-950"
-      type="button"
+      to="/jobs/add"
     >
       Add Job
-    </button>
+    </RouterLink>
   </header>
 </template>
