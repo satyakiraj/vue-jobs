@@ -3,6 +3,7 @@ defineOptions({
   name: 'JobCard',
 })
 import { computed, defineProps, ref } from 'vue'
+import { RouterLink } from 'vue-router'
 
 const props = defineProps({
   job: {
@@ -44,11 +45,12 @@ const truncatedDescription = computed(() => {
         <i class="pi pi-map-marker"></i>
         {{ job.location }}
       </p>
-      <a
+      <RouterLink
         class="cursor-pointer rounded bg-emerald-500 px-4 py-1 text-white transition hover:bg-emerald-600"
+        :to="`/jobs/${job.id}`"
       >
         Read More
-      </a>
+      </RouterLink>
     </div>
   </div>
 </template>

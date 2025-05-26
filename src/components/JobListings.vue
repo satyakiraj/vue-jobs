@@ -1,9 +1,9 @@
 <script setup>
-import { defineProps, ref } from 'vue'
+import { defineProps, ref, onMounted } from 'vue'
+import axios from 'axios'
 import Job from '@/components/jobs.vue'
-import jobData from '@/jobs.json'
 
-const jobs = ref(jobData.jobs)
+const jobs = ref([])
 defineProps({
   limit: Number,
   showButton: {
@@ -11,6 +11,18 @@ defineProps({
     default: false,
   },
 })
+
+onMounted(async () => {
+  try{
+   const response = await axios.get('http://localhost:8080/jobs')
+    jobs.value = response.data
+  }
+  catch(error){
+    console.log(error)
+
+  }
+})
+
 </script>
 
 <template>
