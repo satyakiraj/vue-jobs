@@ -18,7 +18,7 @@ defineProps({
 
 onMounted(async () => {
   try {
-    const response = await axios.get('http://localhost:8080/jobs')
+    const response = await axios.get('/api/jobs')
     state.jobs = response.data
     console.log(response, state.jobs)
   } catch (error) {

@@ -3,8 +3,10 @@ import axios from 'axios'
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 import { onMounted, reactive } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
+import BackButton from '@/components/BackButton.vue'
 
 const route = useRoute()
+// gets the id to get the job description before mounting the component
 const id = route.params.id
 const state = reactive({
   job: {},
@@ -13,7 +15,7 @@ const state = reactive({
 
 onMounted(async () => {
   try {
-    const response = await axios.get(`http://localhost:8080/jobs/${id}`)
+    const response = await axios.get(`/api/jobs/${id}`)
     state.job = response.data
     console.log(response, state.job)
   } catch (error) {
@@ -25,6 +27,7 @@ onMounted(async () => {
 </script>
 
 <template>
+  <BackButton />
   <section v-if="!state.isLoading" class="bg-green-50">
     <div class="container m-auto py-10 px-6">
       <div class="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">

@@ -47,7 +47,7 @@ const truncatedDescription = computed(() => {
       </p>
       <RouterLink
         class="cursor-pointer rounded bg-emerald-500 px-4 py-1 text-white transition hover:bg-emerald-600"
-        :to="`/jobs/${job.id}`"
+        :to="`/api/jobs/${job.id}`"
       >
         Read More
       </RouterLink>
