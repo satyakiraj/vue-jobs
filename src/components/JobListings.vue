@@ -52,6 +52,5 @@ onMounted(async () => {
       class="bg-black text-white w-1/2 text-center py-4 cursor-pointer h-14 tex-xl font-medium rounded-2xl hover:bg-gray-800"
       >View All Jobs
     </RouterLink>
-    >
   </section>
 </template>

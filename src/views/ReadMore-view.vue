@@ -2,16 +2,35 @@
 import axios from 'axios'
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 import { onMounted, reactive } from 'vue'
-import { RouterLink, useRoute } from 'vue-router'
+import { RouterLink, useRoute, useRouter } from 'vue-router'
+import { useToast } from 'vue-toast-notification'
 import BackButton from '@/components/BackButton.vue'
 
 const route = useRoute()
-// gets the id to get the job description before mounting the component
+const router = useRouter()
+const toast = useToast() // gets the id to get the job description before mounting the component
 const id = route.params.id
 const state = reactive({
   job: {},
   isLoading: true,
 })
+
+const deleteJob = async () => {
+  try {
+    const confirm = window.confirm('Are you sure you want to delete this job?')
+    if (confirm) {
+      await axios.delete(`/api/jobs/${id}`)
+      toast.success('Job Deleted Successfully')
+      //takes user to a specific route
+      await router.push('/jobs')
+    }
+  } catch (error) {
+    console.log(error)
+    toast.error('Error deleting job!', {
+      duration: 600,
+    })
+  }
+}
 
 onMounted(async () => {
   try {
@@ -67,11 +86,11 @@ onMounted(async () => {
 
             <h3 class="text-xl">Contact Email:</h3>
 
-            <p class="my-2 bg-green-100 p-2 font-bold">{{ state.job.company.contactemail }}</p>
+            <p class="my-2 bg-green-100 p-2 font-bold">{{ state.job.company.contactEmail }}</p>
 
             <h3 class="text-xl">Contact Phone:</h3>
 
-            <p class="my-2 bg-green-100 p-2 font-bold">{{ state.job.company.contactphone }}</p>
+            <p class="my-2 bg-green-100 p-2 font-bold">{{ state.job.company.contactPhone }}</p>
           </div>
           <div class="bg-white p-6 rounded-lg shadow-md mt-6">
             <h3 class="text-xl font-bold mb-6">Manage Job</h3>
@@ -81,6 +100,7 @@ onMounted(async () => {
               >Edit Job
             </RouterLink>
             <button
+              @click="deleteJob"
               class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
             >
               Delete Job

@@ -1,9 +1,15 @@
 <script setup>
 import axios from 'axios'
-import { reactive, toRaw } from 'vue'
+import { onMounted, reactive, toRaw } from 'vue'
 import { useToast } from 'vue-toast-notification'
+import { useRoute, useRouter } from 'vue-router'
 
 const toast = useToast()
+const route = useRoute()
+const router = useRouter()
+const id = route.params.id
+
+const job = reactive([])
 
 const formData = reactive({
   type: 'Full-Time',
@@ -19,17 +25,33 @@ const formData = reactive({
   },
 })
 
-const addJob = async () => {
+onMounted(async () => {
+  const response = await axios.get(`/api/jobs/${id}`)
+  job.push(response.data)
+  formData.type = job[0].type
+  formData.title = job[0].title
+  formData.description = job[0].description
+  formData.salary = job[0].salary
+  formData.location = job[0].location
+  formData.company.name = job[0].company.name
+  formData.company.description = job[0].company.description
+  formData.company.contactEmail = job[0].company.contactEmail
+  formData.company.contactPhone = job[0].company.contactPhone
+})
+
+const editJob = async (e) => {
+  e.preventDefault()
   try {
-    const response = await axios.post('/api/jobs', toRaw(formData))
+    const response = await axios.put(`/api/jobs/${id}`, toRaw(formData))
     console.log(response.data)
-    toast.success('Job added successfully!', {
+    toast.success('Job updated successfully!', {
       duration: 5000,
     })
+    await router.push('/jobs')
   } catch (error) {
     console.log(error)
-    toast.error('Error adding job!', {
-      duration: 500,
+    toast.error('Error editing job!', {
+      duration: 5000,
     })
   }
 }
@@ -40,7 +62,7 @@ const addJob = async () => {
     <div class="container m-auto max-w-2xl py-24">
       <div class="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
         <form>
-          <h2 class="text-3xl text-center font-semibold mb-6">Add Job</h2>
+          <h2 class="text-3xl text-center font-semibold mb-6">Edit Job</h2>
 
           <div class="mb-4">
             <label class="block text-gray-700 font-bold mb-2" for="type">Job Type</label>
@@ -178,9 +200,9 @@ const addJob = async () => {
             <button
               class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
               type="submit"
-              @click="addJob"
+              @click="editJob"
             >
-              Add Job
+              Edit Job
             </button>
           </div>
         </form>
