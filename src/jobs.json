@@ -83,34 +83,6 @@
         "contactEmail": "contact@ipsumlorem.com",
         "contactPhone": "555-555-5555"
       }
-    },
-    {
-      "id": "06f9",
-      "type": "Full-Time",
-      "title": "Senior Vue.js developer",
-      "description": "We are seeking an experienced Vue.js developer to join our growing team. The ideal candidate will have strong experience with Vue 3, TypeScript, and modern frontend development practices.\n",
-      "salary": "$90K - $100K",
-      "location": "Boston, MA",
-      "company": {
-        "name": "TechCorp",
-        "description": "TechCorp Solutions is a leading software development company specializing in creating enterprise-level web applications. We focus on delivering high-quality solutions using cutting-edge technologies.\n",
-        "contactEmail": "careers@techcorp-gmail.com",
-        "contactPhone": "415-555-0123"
-      }
-    },
-    {
-      "type": "Internship",
-      "title": "Junior Vu.js developer",
-      "description": "Looking for a person with previous coding experience with Vue.js, Express.js, Node and Typescript",
-      "salary": "$60K - $70K",
-      "location": "Washington D.C",
-      "company": {
-        "name": "Sun Inc.",
-        "description": "We built softwares ranging for a wide variety of fields. Join us to make life easy of millions of professionals out there. 😀😀",
-        "contactEmail": "careers@sun.inc-gmail.com",
-        "contactPhone": "556-555-0123"
-      },
-      "id": "9f66"
     }
   ]
 }
